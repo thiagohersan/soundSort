@@ -8,7 +8,6 @@
 class Song {
     Sample** oldOrder;
     Sample** newOrder;
-    int foo;
     unsigned int numFrames;
     unsigned int numChannels;
 

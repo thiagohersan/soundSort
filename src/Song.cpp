@@ -6,7 +6,6 @@ Song::~Song(){
     }
     delete[] oldOrder;
     delete[] newOrder;
-    int foo;
 }
 
 Song::Song(unsigned int nFrames, unsigned int nCchannels){
