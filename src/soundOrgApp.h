@@ -18,21 +18,20 @@ public:
     unsigned int *numFrames;
     unsigned int *numChannels;
 
-	
 	int *maxStat;
 	int *maxBinStat;
-	
-	int mpX;
-	int cF0, cF1;
-	
+
+    ofVec2f *drawBoundary;
+
 	int appHeight, appWidth;
-	
-	void drawSamples (int from, int to);
-	void drawStats   (int from, int to);
-	void drawStatsBin(int from, int to);
-	bool needsDrawed;
+
+    void drawSamples(ofVec2f bounds);
+    void drawStats(ofVec2f bounds);
+    void drawStatsBin(ofVec2f bounds);
+
+    bool needsDrawed;
 	bool statsNeedsDrawed;
-	
+
 	unsigned int whichToDraw;
 	
 	void setup();

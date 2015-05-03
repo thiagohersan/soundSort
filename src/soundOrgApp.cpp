@@ -27,7 +27,7 @@ void soundOrgApp::setup() {
     song       = new Song*[numOfSongs];
     maxStat    = new int[numOfSongs];
     maxBinStat = new int[numOfSongs];
-
+    drawBoundary = new ofVec2f[numOfSongs];
 
     for(int n=0; n<numOfSongs; n++) {
         maxVal[n] = 0;
@@ -139,8 +139,7 @@ void soundOrgApp::setup() {
         printf("ordered the samples\n");
 		
         // set which frames to show (initially show all frames)
-        cF0 = 0;
-        cF1 = numFrames[n];
+        drawBoundary[n] = ofVec2f(0,numFrames[n]);
     }
 	
     whichToDraw = 0;
@@ -156,13 +155,13 @@ void soundOrgApp::draw() {
     if(needsDrawed == 1) {
         ofBackground(220,220,220);
         if(statsNeedsDrawed == 1) {
-            //drawStatsBin(cF0,cF1);
-            drawStats(cF0,cF1);
-			//drawSamples(cF0, cF1);
+            //drawStatsBin(drawBoundary[whichToDraw]);
+            drawStats(drawBoundary[whichToDraw]);
+            //drawSamples(drawBoundary[whichToDraw]);
             statsNeedsDrawed = 0;
         }
         else {
-            drawSamples(cF0, cF1);
+            drawSamples(drawBoundary[whichToDraw]);
         }
         needsDrawed = 0;
     }
@@ -181,7 +180,9 @@ void setColor(float y, float maxY, int c) {
 }
 
 // from and to are in frames...
-void soundOrgApp::drawSamples(int from, int to) {
+void soundOrgApp::drawSamples(ofVec2f bounds) {
+    int from = bounds.x;
+    int to = bounds.y;
     int numFrames = (to-from);
 	
     // if more frames than pixels... grab every other numFrames/width-th frame
@@ -192,7 +193,7 @@ void soundOrgApp::drawSamples(int from, int to) {
 			 float y0 = (float(sBuffer[numFrames/ofGetWidth()*i+from+0])/float(32767)) * ofGetHeight()*0.25;
 			 float y1 = (float(sBuffer[numFrames/ofGetWidth()*i+from+1])/float(32767)) * ofGetHeight()*0.25;
 			 */
-			
+
             float y0 = (float(song[whichToDraw]->getOldSample(numFrames/appWidth*i+from))/float(MAX_SAMPLE_VAL)) * float(appHeight)*0.25;
             float y1 = (float(song[whichToDraw]->getNewSample(numFrames/appWidth*i+from))/float(MAX_SAMPLE_VAL)) * float(appHeight)*0.25;
 			
@@ -231,7 +232,9 @@ void soundOrgApp::drawSamples(int from, int to) {
 
 ////////////////////////////////////////////////
 // from and to are in frames... or sample locations on screen
-void soundOrgApp::drawStats(int from, int to) {
+void soundOrgApp::drawStats(ofVec2f bounds) {
+    int from = bounds.x;
+    int to = bounds.y;
     int numFrames = (to-from);
 
     // if more frames than pixels... grab every other numFrames/width-th frame
@@ -280,7 +283,10 @@ void soundOrgApp::drawStats(int from, int to) {
 }
 
 // only draw the binned version
-void soundOrgApp::drawStatsBin(int from, int to) {
+void soundOrgApp::drawStatsBin(ofVec2f bounds) {
+    int from = bounds.x;
+    int to = bounds.y;
+
     //for(int n=0; n<numOfSongs; n++) {
 	// always the same graph...
 	for(int i=0; i<appWidth; i++) {
@@ -296,72 +302,11 @@ void soundOrgApp::drawStatsBin(int from, int to) {
 
 
 //--------------------------------------------------------------
-void soundOrgApp::keyPressed(int key) {
-    if(key == 'r') {
-        cF0 = 0;
-        cF1 = (statsNeedsDrawed==1)?(NUM_SAMPLE_VAL+1):numFrames[whichToDraw];
-    }
-    else if(key == 's') {
-        statsNeedsDrawed = !statsNeedsDrawed;
-        cF0 = 0;
-        cF1 = (statsNeedsDrawed==1)?(NUM_SAMPLE_VAL+1):numFrames[whichToDraw];
-    }
-    else if((key >= '0') && (key <= '9')){
-        whichToDraw = (key-'0')%numOfSongs;
-        cF0 = 0;
-        cF1 = (statsNeedsDrawed==1)?(NUM_SAMPLE_VAL+1):numFrames[whichToDraw];
-    }
-    needsDrawed = 1;
-}
-
+void soundOrgApp::keyPressed(int key) {}
 void soundOrgApp::keyReleased(int key) {}
 void soundOrgApp::mouseMoved(int x, int y ) {}
 void soundOrgApp::mouseDragged(int x, int y, int button) {}
 void soundOrgApp::windowResized(int w, int h) {}
+void soundOrgApp::mousePressed(int x, int y, int button) {}
+void soundOrgApp::mouseReleased(int x, int y, int button) {}
 
-//--------------------------------------------------------------
-void soundOrgApp::mousePressed(int x, int y, int button) {
-    if(button == 0) {
-        mpX = x;
-    }
-}
-
-//--------------------------------------------------------------
-void soundOrgApp::mouseReleased(int x, int y, int button) {
-    if(button == 0) {
-        // local x0 and x1 to deal with l->r and r->l drawings
-        int x0, x1;
-		
-        // left to right...
-        if(x>mpX) {
-            x0 = mpX;
-            x1 = x;
-        }
-        // right to left
-        else {
-            x0 = x;
-            x1 = mpX;
-        }
-		
-        // assuming cF1 > cF0
-        int cF0_ = float(x0)/float(appWidth)*(cF1-cF0)+cF0;
-        int cF1_ = float(x1)/float(appWidth)*(cF1-cF0)+cF0;
-		
-        cF0 = cF0_;
-        cF1 = cF1_;
-    }
-    else if(button == 2) {
-        int r = cF1 - cF0;
-        cF0 -= r/2;
-        cF1 += r/2;
-        if(cF0 < 0) {
-            cF0 = 0;
-        }
-        int maxAllowed = (statsNeedsDrawed==1)?(NUM_SAMPLE_VAL+1):numFrames[whichToDraw];
-        if(cF1 > maxAllowed) {
-            cF1 = maxAllowed;
-        }
-    }
-	
-    needsDrawed = 1;
-}
