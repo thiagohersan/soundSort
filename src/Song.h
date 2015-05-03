@@ -8,17 +8,19 @@
 class Song {
     Sample** oldOrder;
     Sample** newOrder;
-    int size;
+    unsigned int numFrames;
+    unsigned int numChannels;
 
     public:
-        Song(int s);
+        Song(unsigned int nFrames, unsigned int nCchannels);
         ~Song();
 
         void initSampleAt(int i, short v);
         short getOldSample(int i);
         short getNewSample(int i);
-        void  orderNew();
-        void  setOldSample(int i, short v);
-        void  setNewSample(int i, short v);
-        int   getSize();
+        void orderSamples();
+        void setOldSample(int i, short v);
+        void setNewSample(int i, short v);
+        unsigned int getNumFrames() const;
+        unsigned int getNumChannels() const;
 };

@@ -12,10 +12,7 @@ public:
     unsigned int numOfSongs;
 	int appHeight, appWidth;
 
-	short **sBuffer;
-	Song **song;
-    unsigned int *numFrames;
-    unsigned int *numChannels;
+	vector<Song*> mySongs;
 
     ofVec2f *drawBoundary;
     bool needsDrawed;

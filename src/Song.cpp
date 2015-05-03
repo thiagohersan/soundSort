@@ -1,18 +1,19 @@
 #include "Song.h"
 
 Song::~Song(){
-    for(int i=0; i<size; i++){
+    for(int i=0; i<numFrames; i++){
         delete oldOrder[i];
     }
-    delete oldOrder;
-    delete newOrder;
+    delete[] oldOrder;
+    delete[] newOrder;
 }
 
-Song::Song(int s){
+Song::Song(unsigned int nFrames, unsigned int nCchannels){
     // two arrays of pointers
-    oldOrder = new Sample*[s];
-    newOrder = new Sample*[s];
-    size = s;
+    oldOrder = new Sample*[nFrames];
+    newOrder = new Sample*[nFrames];
+    numFrames = nFrames;
+    numChannels = nCchannels;
 }
 
 // IMPORTANT : creates a sample obj!
@@ -29,12 +30,12 @@ bool SampleComp(const Sample* s0, const Sample* s1){
 
 
 // order the array into newOrder
-void Song::orderNew(){
+void Song::orderSamples(){
     // shove the array into a vector
-    std::vector<Sample*> tempV(newOrder, newOrder+size);
+    std::vector<Sample*> tempV(newOrder, newOrder+numFrames);
     sort(tempV.begin(), tempV.end(), SampleComp);
 
-    for(int i=0; i<size; i++){
+    for(int i=0; i<numFrames; i++){
         // set the new index value for each sample.
         // iterate through vector, get original index of sample at i,
         // and use it to index the original-ordered array
@@ -69,6 +70,9 @@ void Song::setNewSample(int i, short v){
     (newOrder[i]->setValue(v));
 }
 
-int Song::getSize(){
-    return size;
+unsigned int Song::getNumFrames() const{
+    return numFrames;
+}
+unsigned int Song::getNumChannels() const{
+    return numChannels;
 }
