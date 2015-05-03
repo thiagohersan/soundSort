@@ -53,7 +53,7 @@ void soundOrgApp::setup() {
                 maxVal = abs(mv);
             }
         }
-        printf("max val[%d] : %d\n", n, maxVal);
+        cout << "--max val: " << maxVal << endl;
 		
         // don't need it anymore, delete!
         delete[] tempBuffer;
@@ -69,11 +69,11 @@ void soundOrgApp::setup() {
             mySongs.at(n)->setOldSample(i,(short)t);
             mySongs.at(n)->setNewSample(i,(short)t);
         }
-        printf("scaled samples in the arrays\n");
+        cout << "--scaled samples in the arrays" << endl;
 
         // order the samples
         mySongs.at(n)->orderSamples();
-        printf("ordered the samples\n");
+        cout << "--ordered the samples" << endl << endl;
 		
         // set which frames to show (initially show all frames)
         drawBoundary[n] = ofVec2f(0,numFrames);
