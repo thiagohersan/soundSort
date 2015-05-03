@@ -24,7 +24,7 @@
 		AF1EF0D61702DA4900A7382A /* Tracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF1EF0071702DA4600A7382A /* Tracker.cpp */; };
 		AF1EF0D71702DA4900A7382A /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF1EF0081702DA4600A7382A /* Utilities.cpp */; };
 		AF1EF0D81702DA4900A7382A /* Wrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF1EF0091702DA4600A7382A /* Wrappers.cpp */; };
-		AF8DDC921AF5B1F100855A20 /* song.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDC8D1AF5B1F100855A20 /* song.cpp */; };
+		AF8DDC921AF5B1F100855A20 /* Song.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDC8D1AF5B1F100855A20 /* Song.cpp */; };
 		AF8DDC931AF5B1F100855A20 /* soundOrgApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDC8F1AF5B1F100855A20 /* soundOrgApp.cpp */; };
 		AF8DDCCB1AF66F9800855A20 /* libaudiodecoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8DDCBB1AF66F7000855A20 /* libaudiodecoder.a */; };
 		AF8DDCCE1AF6704800855A20 /* ofSoundFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDCCC1AF6704800855A20 /* ofSoundFile.cpp */; };
@@ -205,8 +205,8 @@
 		AF1EF00D1702DA4600A7382A /* ofxCv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCv.h; sourceTree = "<group>"; };
 		AF8D9BD21710292B00C97CC2 /* soundOrg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = soundOrg.app; path = /Users/thiago/Dev/openFrameworks/apps/myApps/soundOrg/bin/soundOrg.app; sourceTree = "<absolute>"; };
 		AF8DDC8C1AF5B1F100855A20 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
-		AF8DDC8D1AF5B1F100855A20 /* song.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = song.cpp; sourceTree = "<group>"; };
-		AF8DDC8E1AF5B1F100855A20 /* song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = song.h; sourceTree = "<group>"; };
+		AF8DDC8D1AF5B1F100855A20 /* Song.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Song.cpp; sourceTree = "<group>"; };
+		AF8DDC8E1AF5B1F100855A20 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
 		AF8DDC8F1AF5B1F100855A20 /* soundOrgApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = soundOrgApp.cpp; sourceTree = "<group>"; };
 		AF8DDC901AF5B1F100855A20 /* soundOrgApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = soundOrgApp.h; sourceTree = "<group>"; };
 		AF8DDCB51AF66F7000855A20 /* CADebugMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
@@ -783,8 +783,8 @@
 			isa = PBXGroup;
 			children = (
 				AF8DDC8C1AF5B1F100855A20 /* Sample.h */,
-				AF8DDC8D1AF5B1F100855A20 /* song.cpp */,
-				AF8DDC8E1AF5B1F100855A20 /* song.h */,
+				AF8DDC8D1AF5B1F100855A20 /* Song.cpp */,
+				AF8DDC8E1AF5B1F100855A20 /* Song.h */,
 				AF8DDC8F1AF5B1F100855A20 /* soundOrgApp.cpp */,
 				AF8DDC901AF5B1F100855A20 /* soundOrgApp.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
@@ -898,7 +898,7 @@
 				AF1EEDF81702D92B00A7382A /* ofxCvGrayscaleImage.cpp in Sources */,
 				AF8DDCD11AF6714E00855A20 /* ofSoundBuffer.cpp in Sources */,
 				AF1EEDF91702D92B00A7382A /* ofxCvHaarFinder.cpp in Sources */,
-				AF8DDC921AF5B1F100855A20 /* song.cpp in Sources */,
+				AF8DDC921AF5B1F100855A20 /* Song.cpp in Sources */,
 				AF1EEDFA1702D92B00A7382A /* ofxCvImage.cpp in Sources */,
 				AF1EEDFB1702D92B00A7382A /* ofxCvShortImage.cpp in Sources */,
 				AF1EF0D01702DA4900A7382A /* Calibration.cpp in Sources */,

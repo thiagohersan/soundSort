@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "song.h"
+#include "Song.h"
 
 #define MAX_SAMPLE_VAL 32767
 #define NUM_SAMPLE_VAL 65535

@@ -1,9 +1,11 @@
-#include "song.h"
+#include "Song.h"
 
 Song::~Song(){
     for(int i=0; i<size; i++){
         delete oldOrder[i];
     }
+    delete oldOrder;
+    delete newOrder;
 }
 
 Song::Song(int s){
@@ -30,8 +32,6 @@ bool SampleComp(const Sample* s0, const Sample* s1){
 void Song::orderNew(){
     // shove the array into a vector
     std::vector<Sample*> tempV(newOrder, newOrder+size);
-    std::vector<Sample*>::const_iterator it;
-
     sort(tempV.begin(), tempV.end(), SampleComp);
 
     for(int i=0; i<size; i++){
@@ -45,8 +45,8 @@ void Song::orderNew(){
     }
 
     // sanity check
-    //printf("value at old[26700]: %d\n", (oldOrder[26700])->getSample());
-    //printf("value at new[old[26700].new]: %d\n", (newOrder[(oldOrder[26700])->getNewIndex()])->getSample());
+    //std::cout << "value at old[26700]: " << (oldOrder[26700])->getSample() << std::endl;
+    //std::cout << "value at new[old[26700].new]: " << (newOrder[(oldOrder[26700])->getNewIndex()])->getSample() << std::endl;
 }
 
 // grab sample from original ordered array
