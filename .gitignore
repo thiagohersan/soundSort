@@ -1,0 +1,7 @@
+obj/
+.DS_*
+bin/*app
+bin/data/*wav
+bin/data/*mp3
+*/xcuserdata/
+*/*/xcuserdata
