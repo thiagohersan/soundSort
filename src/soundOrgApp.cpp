@@ -102,18 +102,6 @@ void soundOrgApp::draw() {
     }
 }
 
-// helper function for setting line color based on some maths
-void setColor(float y, float maxY, int c) {
-    y = fabs(y);
-    unsigned short rgb[] = {0,0,0};
-    rgb[(c+2)%3] = (1-(y/maxY))*100 + 127;
-    rgb[(c+1)%3] = (1-(y/maxY))*100 + 40;
-    rgb[(c+0)%3] = (1-(y/maxY))*100 + 0;
-    int a = (y/maxY)*200+55;
-    a = 255;
-    ofSetColor(rgb[0],rgb[1],rgb[2],a);
-}
-
 // from and to are in frames...
 void soundOrgApp::drawSamples(ofVec2f bounds) {
     int from = bounds.x;
@@ -134,11 +122,10 @@ void soundOrgApp::drawSamples(ofVec2f bounds) {
 			
             //int cc0 = int((fabs(y0)/(ofGetHeight()*0.25)) * (155.0) + 100.0);
             //int cc1 = int((fabs(y1)/(ofGetHeight()*0.25)) * (155.0) + 100.0);
-			
-            setColor(y0, (appWidth*0.25), whichToDraw%3);
+
+            ofSetColor(0);
             // minus y0 and minus y1 because OF has (0,0) on top left corner
             ofLine(i,appHeight*0.25,i,appHeight*0.25-y0);
-            setColor(y1, (appWidth*0.25), whichToDraw%3);
             ofLine(i,appHeight*0.75,i,appHeight*0.75-y1);
         }
     }
@@ -156,10 +143,9 @@ void soundOrgApp::drawSamples(ofVec2f bounds) {
 			
             float y0 = (float(song[whichToDraw]->getOldSample(int(x0+from)))/float(32767)) * appHeight*0.25;
             float y1 = (float(song[whichToDraw]->getNewSample(int(x0+from)))/float(32767)) * appHeight*0.25;
-			
-            setColor(y0,(appHeight*0.25), whichToDraw%3);
+
+            ofSetColor(0);
             ofRect(x0,appHeight*0.25,f0*2/3,-y0);
-            setColor(y1,(appHeight*0.25), whichToDraw%3);
             ofRect(x0,appHeight*0.75,f0*2/3,-y1);
         }
     }
