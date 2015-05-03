@@ -10,34 +10,22 @@ class soundOrgApp : public ofBaseApp{
 public:
 	vector<string> fileNames;
     unsigned int numOfSongs;
+	int appHeight, appWidth;
 
 	short **sBuffer;
 	Song **song;
-	unsigned int **stats;
-	unsigned int **binStats;
     unsigned int *numFrames;
     unsigned int *numChannels;
 
-	int *maxStat;
-	int *maxBinStat;
-
     ofVec2f *drawBoundary;
-
-	int appHeight, appWidth;
-
-    void drawSamples(ofVec2f bounds);
-    void drawStats(ofVec2f bounds);
-    void drawStatsBin(ofVec2f bounds);
-
     bool needsDrawed;
-	bool statsNeedsDrawed;
-
 	unsigned int whichToDraw;
-	
+    void drawSamples(ofVec2f bounds);
+
 	void setup();
 	void update();
 	void draw();
-	
+
 	void keyPressed  (int key);
 	void keyReleased(int key);
 	void mouseMoved(int x, int y );
