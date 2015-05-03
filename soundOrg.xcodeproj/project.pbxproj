@@ -26,7 +26,7 @@
 		AF1EF0D81702DA4900A7382A /* Wrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF1EF0091702DA4600A7382A /* Wrappers.cpp */; };
 		AF8DDC911AF5B1F100855A20 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDC8B1AF5B1F100855A20 /* sample.cpp */; };
 		AF8DDC921AF5B1F100855A20 /* song.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDC8D1AF5B1F100855A20 /* song.cpp */; };
-		AF8DDC931AF5B1F100855A20 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDC8F1AF5B1F100855A20 /* testApp.cpp */; };
+		AF8DDC931AF5B1F100855A20 /* soundOrgApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDC8F1AF5B1F100855A20 /* soundOrgApp.cpp */; };
 		AF8DDCCB1AF66F9800855A20 /* libaudiodecoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8DDCBB1AF66F7000855A20 /* libaudiodecoder.a */; };
 		AF8DDCCE1AF6704800855A20 /* ofSoundFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDCCC1AF6704800855A20 /* ofSoundFile.cpp */; };
 		AF8DDCD11AF6714E00855A20 /* ofSoundBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDCCF1AF6714E00855A20 /* ofSoundBuffer.cpp */; };
@@ -209,8 +209,8 @@
 		AF8DDC8C1AF5B1F100855A20 /* sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sample.h; sourceTree = "<group>"; };
 		AF8DDC8D1AF5B1F100855A20 /* song.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = song.cpp; sourceTree = "<group>"; };
 		AF8DDC8E1AF5B1F100855A20 /* song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = song.h; sourceTree = "<group>"; };
-		AF8DDC8F1AF5B1F100855A20 /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
-		AF8DDC901AF5B1F100855A20 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
+		AF8DDC8F1AF5B1F100855A20 /* soundOrgApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = soundOrgApp.cpp; sourceTree = "<group>"; };
+		AF8DDC901AF5B1F100855A20 /* soundOrgApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = soundOrgApp.h; sourceTree = "<group>"; };
 		AF8DDCB51AF66F7000855A20 /* CADebugMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
 		AF8DDCB61AF66F7000855A20 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
 		AF8DDCB71AF66F7000855A20 /* audiodecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = audiodecoder.h; sourceTree = "<group>"; };
@@ -788,8 +788,8 @@
 				AF8DDC8C1AF5B1F100855A20 /* sample.h */,
 				AF8DDC8D1AF5B1F100855A20 /* song.cpp */,
 				AF8DDC8E1AF5B1F100855A20 /* song.h */,
-				AF8DDC8F1AF5B1F100855A20 /* testApp.cpp */,
-				AF8DDC901AF5B1F100855A20 /* testApp.h */,
+				AF8DDC8F1AF5B1F100855A20 /* soundOrgApp.cpp */,
+				AF8DDC901AF5B1F100855A20 /* soundOrgApp.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				AF8DDCCC1AF6704800855A20 /* ofSoundFile.cpp */,
 				AF8DDCCD1AF6704800855A20 /* ofSoundFile.h */,
@@ -911,7 +911,7 @@
 				AF1EF0D41702DA4900A7382A /* Helpers.cpp in Sources */,
 				AF1EF0D51702DA4900A7382A /* RunningBackground.cpp in Sources */,
 				AF1EF0D61702DA4900A7382A /* Tracker.cpp in Sources */,
-				AF8DDC931AF5B1F100855A20 /* testApp.cpp in Sources */,
+				AF8DDC931AF5B1F100855A20 /* soundOrgApp.cpp in Sources */,
 				AF1EF0D71702DA4900A7382A /* Utilities.cpp in Sources */,
 				AF1EF0D81702DA4900A7382A /* Wrappers.cpp in Sources */,
 				AFEB3A7A1751FBFC00D8419B /* ObjectFinder.cpp in Sources */,

@@ -6,7 +6,7 @@
 #define MAX_SAMPLE_VAL 32767
 #define NUM_SAMPLE_VAL 65535
 
-class testApp : public ofBaseApp{
+class soundOrgApp : public ofBaseApp{
 public:
 	vector<string> fileNames;
     unsigned int numOfSongs;

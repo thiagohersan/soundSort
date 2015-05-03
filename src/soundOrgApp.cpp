@@ -1,8 +1,8 @@
-#include "testApp.h"
+#include "soundOrgApp.h"
 #include "ofSoundFile.h"
 
 //--------------------------------------------------------------
-void testApp::setup() {
+void soundOrgApp::setup() {
     ofSetFrameRate(30);
     ofSetBackgroundAuto(false);
     ofEnableAlphaBlending();
@@ -149,10 +149,10 @@ void testApp::setup() {
 }
 
 //--------------------------------------------------------------
-void testApp::update() {}
+void soundOrgApp::update() {}
 
 //--------------------------------------------------------------
-void testApp::draw() {
+void soundOrgApp::draw() {
     if(needsDrawed == 1) {
         ofBackground(220,220,220);
         if(statsNeedsDrawed == 1) {
@@ -181,7 +181,7 @@ void setColor(float y, float maxY, int c) {
 }
 
 // from and to are in frames...
-void testApp::drawSamples(int from, int to) {
+void soundOrgApp::drawSamples(int from, int to) {
     int numFrames = (to-from);
 	
     // if more frames than pixels... grab every other numFrames/width-th frame
@@ -231,7 +231,7 @@ void testApp::drawSamples(int from, int to) {
 
 ////////////////////////////////////////////////
 // from and to are in frames... or sample locations on screen
-void testApp::drawStats(int from, int to) {
+void soundOrgApp::drawStats(int from, int to) {
     int numFrames = (to-from);
 
     // if more frames than pixels... grab every other numFrames/width-th frame
@@ -280,7 +280,7 @@ void testApp::drawStats(int from, int to) {
 }
 
 // only draw the binned version
-void testApp::drawStatsBin(int from, int to) {
+void soundOrgApp::drawStatsBin(int from, int to) {
     //for(int n=0; n<numOfSongs; n++) {
 	// always the same graph...
 	for(int i=0; i<appWidth; i++) {
@@ -296,7 +296,7 @@ void testApp::drawStatsBin(int from, int to) {
 
 
 //--------------------------------------------------------------
-void testApp::keyPressed(int key) {
+void soundOrgApp::keyPressed(int key) {
     if(key == 'r') {
         cF0 = 0;
         cF1 = (statsNeedsDrawed==1)?(NUM_SAMPLE_VAL+1):numFrames[whichToDraw];
@@ -314,20 +314,20 @@ void testApp::keyPressed(int key) {
     needsDrawed = 1;
 }
 
-void testApp::keyReleased(int key) {}
-void testApp::mouseMoved(int x, int y ) {}
-void testApp::mouseDragged(int x, int y, int button) {}
-void testApp::windowResized(int w, int h) {}
+void soundOrgApp::keyReleased(int key) {}
+void soundOrgApp::mouseMoved(int x, int y ) {}
+void soundOrgApp::mouseDragged(int x, int y, int button) {}
+void soundOrgApp::windowResized(int w, int h) {}
 
 //--------------------------------------------------------------
-void testApp::mousePressed(int x, int y, int button) {
+void soundOrgApp::mousePressed(int x, int y, int button) {
     if(button == 0) {
         mpX = x;
     }
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased(int x, int y, int button) {
+void soundOrgApp::mouseReleased(int x, int y, int button) {
     if(button == 0) {
         // local x0 and x1 to deal with l->r and r->l drawings
         int x0, x1;
