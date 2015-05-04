@@ -73,42 +73,32 @@ void soundOrgApp::drawSamples(Song *song, ofVec2f bounds) {
 	
     // if more frames than pixels... grab every other numFrames/width-th frame
     if(numFrames >= appWidth) {
-        unsigned int framesPerPixel = numFrames/appWidth;
+        unsigned int framesPerPixel = numFrames/appWidth/2;
         for(int i=0; i<appWidth; i++) {
-            unsigned int mIndex = framesPerPixel*i+from;
-
-            /*
-            float maxVal = 0, minVal = 0;
-            for(int j=0; j<framesPerPixel; j++){
-                unsigned int mJndex = mIndex+j;
-                float thisVal = song->getOldSample(mJndex);
-                if(thisVal > maxVal){maxVal = thisVal;}
-                if(thisVal < minVal){minVal = thisVal;}
-            }
-
-            float maxY0 = (maxVal/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
-            float minY0 = (minVal/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
-            float y1 = (float(song->getNewSample(mIndex))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
-
-            ofSetColor(0,255);
-            ofLine(i,appHeight*0.25,i,appHeight*0.25-minY0);
-            ofLine(i,appHeight*0.25,i,appHeight*0.25-maxY0);
-            ofLine(i,appHeight*0.75,i,appHeight*0.75-y1);
-             */
+            unsigned int mIndex = 2*framesPerPixel*i+from;
+            unsigned int mIndexMin = framesPerPixel*i+from;
+            unsigned int mIndexMax = to-(framesPerPixel*(i+1));
 
             for(int j=0; j<framesPerPixel; j++){
-                unsigned int mJndex = mIndex+j;
+                unsigned int mJndex = mIndex+2*j, mJndexMin = mIndexMin+j, mJndexMax = mIndexMax+j;
 
+                // for oldOrder just draw two samples in a row
                 float y0 = (float(song->getOldSample(mJndex))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
+                float y1 = (float(song->getOldSample(mJndex+1))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
                 ofSetColor(0,4);
                 ofLine(i,appHeight*0.25,i,appHeight*0.25-y0);
+                ofLine(i,appHeight*0.25,i,appHeight*0.25-y1);
 
-                float y1 = (float(song->getNewSample(mJndex))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
-                ofLine(i,appHeight*0.75,i,appHeight*0.75-y1);
+                // for newOrder, draw a line between min and max, after folding the array
+                float minY = (float(song->getNewSample(mJndexMin))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
+                float maxY = (float(song->getNewSample(mJndexMax))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
+                int alpha = ofMap(abs(minY)+abs(maxY), 0, appHeight*0.20, 0, 255, true);
+                ofSetColor(0,alpha);
+                ofLine(appWidth-i,appHeight*0.75-minY,appWidth-i,appHeight*0.75-maxY);
             }
         }
     }
-	
+
     // if more pixels than frames... draw every other width/frames-th pixel
     else {
         for(int i=0; i<numFrames; i++) {
