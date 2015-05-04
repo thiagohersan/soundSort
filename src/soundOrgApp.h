@@ -15,6 +15,7 @@ public:
     unsigned int whichToDraw;
     void drawSamples(Song *song, ofVec2f bounds);
     void saveFBO(ofFbo &fbo, string &filename);
+    void reSampleSong(Song *srcSong, Song *dstSong);
 
 	void setup();
 	void update();

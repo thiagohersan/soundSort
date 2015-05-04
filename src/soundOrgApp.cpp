@@ -42,12 +42,24 @@ void soundOrgApp::setup() {
         saveFBO(bgnd, saveFboFileName);
     }
 
-        // TODO: re-order pixels mashup
-        //mySongs.at(n)->saveToFile(ofToString(fileNames.at(n)).append(".wav"));
+    // re-order pixels mashup
+    reSampleSong(mySongs.at(2), mySongs.at(0));
+    reSampleSong(mySongs.at(2), mySongs.at(1));
+    mySongs.at(0)->saveToFile(ofToString("__").append(mySongs.at(0)->getSongName()).append(".wav"));
+    mySongs.at(1)->saveToFile(ofToString("__").append(mySongs.at(1)->getSongName()).append(".wav"));
 
     for(int n=0; n<numOfSongs; n++) {
         // cleanup
         delete mySongs.at(n);
+    }
+}
+
+// src remains unchanged
+void soundOrgApp::reSampleSong(Song *srcSong, Song *dstSong){
+    for(unsigned int i=0; i<dstSong->getNumFrames(); i++){
+        // destructive
+        short srcVal = (i<srcSong->getNumFrames())?srcSong->getNewSample(i):0;
+        dstSong->setNewSample(i, srcVal);
     }
 }
 
