@@ -25,10 +25,18 @@ void soundOrgApp::setup() {
         myVizs.at(n).allocate(appWidth, appHeight);
         myVizs.at(n).begin();
         ofBackground(255);
-        ofSetColor(0);
         drawSamples(mySongs.at(n), ofVec2f(0,mySongs.at(n)->getNumFrames()));
         myVizs.at(n).end();
-        saveFBO(myVizs.at(n), ofToString(fileNames.at(n)).append(".png"));
+
+        ofFbo bgnd = ofFbo();
+        bgnd.allocate(appWidth, appHeight);
+        bgnd.begin();
+        ofBackground(255);
+        ofSetColor(255);
+        myVizs.at(n).draw(0,0);
+        bgnd.end();
+
+        saveFBO(bgnd, ofToString(fileNames.at(n)).append(".png"));
 
         // TODO: re-order pixels mashup
         //mySongs.at(n)->saveToFile(ofToString(fileNames.at(n)).append(".wav"));
@@ -69,6 +77,7 @@ void soundOrgApp::drawSamples(Song *song, ofVec2f bounds) {
         for(int i=0; i<appWidth; i++) {
             unsigned int mIndex = framesPerPixel*i+from;
 
+            /*
             float maxVal = 0, minVal = 0;
             for(int j=0; j<framesPerPixel; j++){
                 unsigned int mJndex = mIndex+j;
@@ -81,9 +90,22 @@ void soundOrgApp::drawSamples(Song *song, ofVec2f bounds) {
             float minY0 = (minVal/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
             float y1 = (float(song->getNewSample(mIndex))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
 
+            ofSetColor(0,255);
             ofLine(i,appHeight*0.25,i,appHeight*0.25-minY0);
             ofLine(i,appHeight*0.25,i,appHeight*0.25-maxY0);
             ofLine(i,appHeight*0.75,i,appHeight*0.75-y1);
+             */
+
+            for(int j=0; j<framesPerPixel; j++){
+                unsigned int mJndex = mIndex+j;
+
+                float y0 = (float(song->getOldSample(mJndex))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
+                ofSetColor(0,4);
+                ofLine(i,appHeight*0.25,i,appHeight*0.25-y0);
+
+                float y1 = (float(song->getNewSample(mJndex))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
+                ofLine(i,appHeight*0.75,i,appHeight*0.75-y1);
+            }
         }
     }
 	
