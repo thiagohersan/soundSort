@@ -119,10 +119,21 @@ void soundOrgApp::drawSamples(Song *song, ofVec2f bounds) {
         unsigned int framesPerPixel = numFrames/appWidth;
         for(int i=0; i<appWidth; i++) {
             unsigned int mIndex = framesPerPixel*i+from;
-            float y0 = (float(song->getOldSample(mIndex))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
+
+            float maxVal = 0, minVal = 0;
+            for(int j=0; j<framesPerPixel; j++){
+                unsigned int mJndex = mIndex+j;
+                float thisVal = song->getOldSample(mJndex);
+                if(thisVal > maxVal){maxVal = thisVal;}
+                if(thisVal < minVal){minVal = thisVal;}
+            }
+
+            float maxY0 = (maxVal/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
+            float minY0 = (minVal/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
             float y1 = (float(song->getNewSample(mIndex))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
 
-            ofLine(i,appHeight*0.25,i,appHeight*0.25-y0);
+            ofLine(i,appHeight*0.25,i,appHeight*0.25-minY0);
+            ofLine(i,appHeight*0.25,i,appHeight*0.25-maxY0);
             ofLine(i,appHeight*0.75,i,appHeight*0.75-y1);
         }
     }
