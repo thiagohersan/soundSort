@@ -55,6 +55,7 @@ void soundOrgApp::setup() {
         cout << "--max val: " << maxVal << endl;
 		
         // don't need it anymore, delete!
+        delete[] ft;
         delete[] tempBuffer;
 		
         // scale values, put them in the arrays
@@ -86,8 +87,10 @@ void soundOrgApp::setup() {
         drawSamples(mySongs.at(n), drawBoundaries.at(n));
         myVizs.at(n).end();
         saveFBO(myVizs.at(n), ofToString(fileNames.at(n)).append(".png"));
-    }
 
+        // cleanup
+        delete mySongs.at(n);
+    }
 }
 
 void soundOrgApp::saveFBO(ofFbo &fbo, string &filename){
@@ -96,6 +99,7 @@ void soundOrgApp::saveFBO(ofFbo &fbo, string &filename){
     fbo.readToPixels(*p);
     f.setFromPixels(*p);
     f.saveImage(filename);
+    delete[] p;
 }
 
 //--------------------------------------------------------------
