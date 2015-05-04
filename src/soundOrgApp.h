@@ -8,16 +8,16 @@
 
 class soundOrgApp : public ofBaseApp{
 public:
-	vector<string> fileNames;
+    int appHeight, appWidth;
+    vector<string> fileNames;
     unsigned int numOfSongs;
-	int appHeight, appWidth;
 
-	vector<Song*> mySongs;
+    vector<Song*> mySongs;
+    vector<ofFbo> myVizs;
 
-    ofVec2f *drawBoundary;
-    bool needsDrawed;
-	unsigned int whichToDraw;
-    void drawSamples(ofVec2f bounds);
+    vector<ofVec2f> drawBoundaries;
+    unsigned int whichToDraw;
+    void drawSamples(Song *song, ofVec2f bounds);
 
 	void setup();
 	void update();
@@ -30,5 +30,4 @@ public:
 	void mousePressed(int x, int y, int button);
 	void mouseReleased(int x, int y, int button);
 	void windowResized(int w, int h);
-	
 };

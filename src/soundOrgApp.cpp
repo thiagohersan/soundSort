@@ -14,7 +14,7 @@ void soundOrgApp::setup() {
     appHeight = ofGetHeight();
     appWidth  = ofGetWidth();
 
-    drawBoundary = new ofVec2f[numOfSongs];
+    whichToDraw = 0;
 
     for(int n=0; n<numOfSongs; n++) {
         unsigned int numChannels, numFrames;
@@ -76,11 +76,17 @@ void soundOrgApp::setup() {
         cout << "--ordered the samples" << endl << endl;
 		
         // set which frames to show (initially show all frames)
-        drawBoundary[n] = ofVec2f(0,numFrames);
-    }
+        drawBoundaries.push_back(ofVec2f(0,numFrames));
 
-    whichToDraw = 0;
-    needsDrawed = true;
+        // draw an FBO with the graphs
+        myVizs.push_back(ofFbo());
+        myVizs.at(n).allocate(appWidth, appHeight);
+        myVizs.at(n).begin();
+        ofClear(255);
+        ofSetColor(0);
+        drawSamples(mySongs.at(n), drawBoundaries.at(n));
+        myVizs.at(n).end();
+    }
 }
 
 //--------------------------------------------------------------
@@ -88,16 +94,12 @@ void soundOrgApp::update() {}
 
 //--------------------------------------------------------------
 void soundOrgApp::draw() {
-    if(needsDrawed) {
-        ofBackground(220,220,220);
-        ofSetColor(0);
-        drawSamples(drawBoundary[whichToDraw]);
-        needsDrawed = false;
-    }
+    ofBackground(255);
+    myVizs.at(whichToDraw).draw(0,0);
 }
 
 // from and to are in frames...
-void soundOrgApp::drawSamples(ofVec2f bounds) {
+void soundOrgApp::drawSamples(Song *song, ofVec2f bounds) {
     int from = bounds.x;
     int to = bounds.y;
     int numFrames = (to-from);
@@ -107,8 +109,8 @@ void soundOrgApp::drawSamples(ofVec2f bounds) {
         unsigned int framesPerPixel = numFrames/appWidth;
         for(int i=0; i<appWidth; i++) {
             unsigned int mIndex = framesPerPixel*i+from;
-            float y0 = (float(mySongs.at(whichToDraw)->getOldSample(mIndex))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
-            float y1 = (float(mySongs.at(whichToDraw)->getNewSample(mIndex))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
+            float y0 = (float(song->getOldSample(mIndex))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
+            float y1 = (float(song->getNewSample(mIndex))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
 
             ofLine(i,appHeight*0.25,i,appHeight*0.25-y0);
             ofLine(i,appHeight*0.75,i,appHeight*0.75-y1);
@@ -132,7 +134,6 @@ void soundOrgApp::drawSamples(ofVec2f bounds) {
 
 void soundOrgApp::mousePressed(int x, int y, int button) {
     whichToDraw = (whichToDraw+1)%numOfSongs;
-    needsDrawed = true;
 }
 
 //--------------------------------------------------------------
