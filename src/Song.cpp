@@ -18,6 +18,7 @@ Song::Song(string filename){
     mSoundFile.readTo(mSoundBuffer);
     numChannels = mSoundFile.getNumChannels();
     numFrames = mSoundFile.getNumSamples()/mSoundFile.getNumChannels();
+    sampleRate = mSoundFile.getSampleRate();
     oldOrder = new Sample*[numFrames];
     newOrder = new Sample*[numFrames];
 
@@ -37,7 +38,7 @@ Song::Song(string filename){
     short maxVal = 0;
     for(unsigned int i=0; i<numFrames; i++) {
         // make mono
-        int mv = (tempBuffer[i+0] + tempBuffer[i+1])/2;
+        int mv = (tempBuffer[numChannels*i+0] + tempBuffer[numChannels*i+1])/2;
         this->initSampleAt(i,mv);
 
         // find largest sample value
@@ -61,6 +62,20 @@ Song::Song(string filename){
         this->setOldSample(i,(short)t);
     }
     cout << "--scaled samples in the arrays" << endl;
+}
+
+void Song::saveToFile(string filename){
+    ofSoundFile mSoundFile;
+    ofSoundBuffer mSoundBuffer;
+    short *tempBuffer = new short[numChannels*numFrames];
+    for(unsigned int i=0; i<numFrames; i++){
+        tempBuffer[numChannels*i] = this->getOldSample(i);
+        tempBuffer[numChannels*i+1] = this->getOldSample(i);
+    }
+    mSoundBuffer.copyFrom(tempBuffer, numFrames, 2, sampleRate);
+    mSoundFile.saveSound(filename, mSoundBuffer);
+    mSoundBuffer.clear();
+    mSoundFile.close();
 }
 
 // IMPORTANT : creates a sample obj!

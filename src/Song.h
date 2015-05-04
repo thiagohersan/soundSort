@@ -13,12 +13,14 @@ class Song {
     Sample** newOrder;
     unsigned int numFrames;
     unsigned int numChannels;
+    unsigned int sampleRate;
+    void initSampleAt(int i, short v);
 
     public:
         Song(string filename);
         ~Song();
+        void saveToFile(string filename);
 
-        void initSampleAt(int i, short v);
         short getOldSample(int i);
         short getNewSample(int i);
         void orderSamples();
