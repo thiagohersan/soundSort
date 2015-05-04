@@ -38,6 +38,8 @@ void soundOrgApp::setup() {
         for(unsigned int i=0; i<numChannels*numFrames; i++){
             tempBuffer[i] = (short) ofMap(ft[i], -1, 1, -MAX_SAMPLE_VAL, MAX_SAMPLE_VAL, true);
         }
+        mSoundBuffer.clear();
+        mSoundFile.close();
 
         mySongs.push_back(new Song(numFrames, numChannels));
 
