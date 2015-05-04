@@ -3,7 +3,7 @@
 
 //--------------------------------------------------------------
 void soundOrgApp::setup() {
-    ofSetFrameRate(30);
+    ofSetVerticalSync(true);
     ofSetBackgroundAuto(false);
     ofEnableAlphaBlending();
 
@@ -80,7 +80,7 @@ void soundOrgApp::setup() {
     }
 
     whichToDraw = 0;
-    needsDrawed = 1;
+    needsDrawed = true;
 }
 
 //--------------------------------------------------------------
@@ -88,10 +88,11 @@ void soundOrgApp::update() {}
 
 //--------------------------------------------------------------
 void soundOrgApp::draw() {
-    if(needsDrawed == 1) {
+    if(needsDrawed) {
         ofBackground(220,220,220);
+        ofSetColor(0);
         drawSamples(drawBoundary[whichToDraw]);
-        needsDrawed = 0;
+        needsDrawed = false;
     }
 }
 
@@ -103,19 +104,12 @@ void soundOrgApp::drawSamples(ofVec2f bounds) {
 	
     // if more frames than pixels... grab every other numFrames/width-th frame
     if(numFrames >= appWidth) {
+        unsigned int framesPerPixel = numFrames/appWidth;
         for(int i=0; i<appWidth; i++) {
-            /*
-			 float y0 = (float(sBuffer[numFrames/ofGetWidth()*i+from+0])/float(32767)) * ofGetHeight()*0.25;
-			 float y1 = (float(sBuffer[numFrames/ofGetWidth()*i+from+1])/float(32767)) * ofGetHeight()*0.25;
-             int cc0 = int((fabs(y0)/(ofGetHeight()*0.25)) * (155.0) + 100.0);
-             int cc1 = int((fabs(y1)/(ofGetHeight()*0.25)) * (155.0) + 100.0);
-			 */
+            unsigned int mIndex = framesPerPixel*i+from;
+            float y0 = (float(mySongs.at(whichToDraw)->getOldSample(mIndex))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
+            float y1 = (float(mySongs.at(whichToDraw)->getNewSample(mIndex))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
 
-            float y0 = (float(mySongs.at(whichToDraw)->getOldSample(numFrames/appWidth*i+from))/float(MAX_SAMPLE_VAL)) * float(appHeight)*0.25;
-            float y1 = (float(mySongs.at(whichToDraw)->getNewSample(numFrames/appWidth*i+from))/float(MAX_SAMPLE_VAL)) * float(appHeight)*0.25;
-
-            ofSetColor(0);
-            // minus y0 and minus y1 because OF has (0,0) on top left corner
             ofLine(i,appHeight*0.25,i,appHeight*0.25-y0);
             ofLine(i,appHeight*0.75,i,appHeight*0.75-y1);
         }
@@ -127,21 +121,19 @@ void soundOrgApp::drawSamples(ofVec2f bounds) {
             float f0 = float(appWidth)/float(numFrames);
             float x0 = f0*i;
 
-            /*
-			 float y0 = (float(sBuffer[int(x0+from+0)])/float(32767)) * ofGetHeight()*0.25;
-			 float y1 = (float(sBuffer[int(x0+from+1)])/float(32767)) * ofGetHeight()*0.25;
-			 */
+            float y0 = (float(mySongs.at(whichToDraw)->getOldSample(int(x0+from)))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
+            float y1 = (float(mySongs.at(whichToDraw)->getNewSample(int(x0+from)))/float(MAX_SAMPLE_VAL)) *appHeight*0.25;
 
-            float y0 = (float(mySongs.at(whichToDraw)->getOldSample(int(x0+from)))/float(32767)) * appHeight*0.25;
-            float y1 = (float(mySongs.at(whichToDraw)->getNewSample(int(x0+from)))/float(32767)) * appHeight*0.25;
-
-            ofSetColor(0);
             ofRect(x0,appHeight*0.25,f0*2/3,-y0);
             ofRect(x0,appHeight*0.75,f0*2/3,-y1);
         }
     }
 }
 
+void soundOrgApp::mousePressed(int x, int y, int button) {
+    whichToDraw = (whichToDraw+1)%numOfSongs;
+    needsDrawed = true;
+}
 
 //--------------------------------------------------------------
 void soundOrgApp::keyPressed(int key) {}
@@ -149,6 +141,5 @@ void soundOrgApp::keyReleased(int key) {}
 void soundOrgApp::mouseMoved(int x, int y ) {}
 void soundOrgApp::mouseDragged(int x, int y, int button) {}
 void soundOrgApp::windowResized(int w, int h) {}
-void soundOrgApp::mousePressed(int x, int y, int button) {}
 void soundOrgApp::mouseReleased(int x, int y, int button) {}
 
