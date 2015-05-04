@@ -203,7 +203,7 @@
 		AF1EF0081702DA4600A7382A /* Utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utilities.cpp; sourceTree = "<group>"; };
 		AF1EF0091702DA4600A7382A /* Wrappers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wrappers.cpp; sourceTree = "<group>"; };
 		AF1EF00D1702DA4600A7382A /* ofxCv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCv.h; sourceTree = "<group>"; };
-		AF8D9BD21710292B00C97CC2 /* soundOrg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = soundOrg.app; path = /Users/thiago/Dev/openFrameworks/apps/myApps/soundOrg/bin/soundOrg.app; sourceTree = "<absolute>"; };
+		AF2D24EA1AF81F9F00B399C6 /* soundOrg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = soundOrg.app; path = /Users/thiago/Dev/openFrameworks/apps/myApps/soundOrg/bin/soundOrg.app; sourceTree = "<absolute>"; };
 		AF8DDC8C1AF5B1F100855A20 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
 		AF8DDC8D1AF5B1F100855A20 /* Song.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Song.cpp; sourceTree = "<group>"; };
 		AF8DDC8E1AF5B1F100855A20 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
@@ -824,7 +824,7 @@
 			);
 			name = soundOrg;
 			productName = myOFApp;
-			productReference = AF8D9BD21710292B00C97CC2 /* soundOrg.app */;
+			productReference = AF2D24EA1AF81F9F00B399C6 /* soundOrg.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
