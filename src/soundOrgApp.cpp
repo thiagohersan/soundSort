@@ -8,6 +8,7 @@ void soundOrgApp::setup() {
 
     fileNames.push_back("LZ.wav");
     fileNames.push_back("VU.wav");
+    fileNames.push_back("MD.wav");
 
     numOfSongs = fileNames.size();
     appHeight = ofGetHeight();
@@ -36,7 +37,10 @@ void soundOrgApp::setup() {
         myVizs.at(n).draw(0,0);
         bgnd.end();
 
-        saveFBO(bgnd, ofToString(fileNames.at(n)).append(".png"));
+        string saveFboFileName = ofToString(fileNames.at(n));
+        saveFboFileName.replace(saveFboFileName.size()-3, 3, "png");
+        saveFboFileName = ofToString("___").append(saveFboFileName);
+        saveFBO(bgnd, saveFboFileName);
 
         // TODO: re-order pixels mashup
         //mySongs.at(n)->saveToFile(ofToString(fileNames.at(n)).append(".wav"));
