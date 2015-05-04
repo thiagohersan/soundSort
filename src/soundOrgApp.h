@@ -18,6 +18,7 @@ public:
     vector<ofVec2f> drawBoundaries;
     unsigned int whichToDraw;
     void drawSamples(Song *song, ofVec2f bounds);
+    void saveFBO(ofFbo &fbo, string &filename);
 
 	void setup();
 	void update();

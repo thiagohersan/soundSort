@@ -3,5 +3,6 @@ obj/
 bin/*app
 bin/data/*wav
 bin/data/*mp3
+bin/data/*png
 */xcuserdata/
 */*/xcuserdata

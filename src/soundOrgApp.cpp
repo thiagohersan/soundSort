@@ -4,7 +4,6 @@
 //--------------------------------------------------------------
 void soundOrgApp::setup() {
     ofSetVerticalSync(true);
-    ofSetBackgroundAuto(false);
     ofEnableAlphaBlending();
 
     fileNames.push_back("LZ.wav");
@@ -82,11 +81,21 @@ void soundOrgApp::setup() {
         myVizs.push_back(ofFbo());
         myVizs.at(n).allocate(appWidth, appHeight);
         myVizs.at(n).begin();
-        ofClear(255);
+        ofBackground(255);
         ofSetColor(0);
         drawSamples(mySongs.at(n), drawBoundaries.at(n));
         myVizs.at(n).end();
+        saveFBO(myVizs.at(n), ofToString(fileNames.at(n)).append(".png"));
     }
+
+}
+
+void soundOrgApp::saveFBO(ofFbo &fbo, string &filename){
+    ofImage f;
+    ofPixels *p = new ofPixels[appWidth*appHeight];
+    fbo.readToPixels(*p);
+    f.setFromPixels(*p);
+    f.saveImage(filename);
 }
 
 //--------------------------------------------------------------
@@ -95,6 +104,7 @@ void soundOrgApp::update() {}
 //--------------------------------------------------------------
 void soundOrgApp::draw() {
     ofBackground(255);
+    ofSetColor(255);
     myVizs.at(whichToDraw).draw(0,0);
 }
 
