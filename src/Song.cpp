@@ -74,6 +74,7 @@ void Song::saveToFile(string filename){
     }
     mSoundBuffer.copyFrom(tempBuffer, numFrames, 2, sampleRate);
     mSoundFile.saveSound(filename, mSoundBuffer);
+    delete[] tempBuffer;
     mSoundBuffer.clear();
     mSoundFile.close();
 }
