@@ -37,14 +37,15 @@ void soundOrgApp::setup() {
         myVizs.at(n).draw(0,0);
         bgnd.end();
 
-        string saveFboFileName = ofToString(fileNames.at(n));
-        saveFboFileName.replace(saveFboFileName.size()-3, 3, "png");
-        saveFboFileName = ofToString("___").append(saveFboFileName);
+        string saveFboFileName = ofToString(mySongs.at(n)->getSongName());
+        saveFboFileName = ofToString("___").append(saveFboFileName.append(".png"));
         saveFBO(bgnd, saveFboFileName);
+    }
 
         // TODO: re-order pixels mashup
         //mySongs.at(n)->saveToFile(ofToString(fileNames.at(n)).append(".wav"));
 
+    for(int n=0; n<numOfSongs; n++) {
         // cleanup
         delete mySongs.at(n);
     }

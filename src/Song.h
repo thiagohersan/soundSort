@@ -11,6 +11,7 @@ using namespace std;
 class Song {
     Sample** oldOrder;
     Sample** newOrder;
+    string songName;
     unsigned int numFrames;
     unsigned int numChannels;
     unsigned int sampleRate;
@@ -28,4 +29,5 @@ class Song {
         void setNewSample(int i, short v);
         unsigned int getNumFrames() const;
         unsigned int getNumChannels() const;
+        const string& getSongName() const;
 };

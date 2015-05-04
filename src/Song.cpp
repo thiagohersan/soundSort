@@ -10,6 +10,8 @@ Song::~Song(){
 }
 
 Song::Song(string filename){
+    songName = filename.substr(0, filename.size()-4);
+
     // open file, read samples into buffers
     ofSoundFile mSoundFile;
     ofSoundBuffer mSoundBuffer;
@@ -138,4 +140,8 @@ unsigned int Song::getNumFrames() const{
 }
 unsigned int Song::getNumChannels() const{
     return numChannels;
+}
+
+const string& Song::getSongName() const{
+    return songName;
 }
