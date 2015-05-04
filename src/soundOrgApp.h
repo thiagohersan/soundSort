@@ -3,9 +3,6 @@
 #include "ofMain.h"
 #include "Song.h"
 
-#define MAX_SAMPLE_VAL 32767
-#define NUM_SAMPLE_VAL 65535
-
 class soundOrgApp : public ofBaseApp{
 public:
     int appHeight, appWidth;
@@ -15,7 +12,6 @@ public:
     vector<Song*> mySongs;
     vector<ofFbo> myVizs;
 
-    vector<ofVec2f> drawBoundaries;
     unsigned int whichToDraw;
     void drawSamples(Song *song, ofVec2f bounds);
     void saveFBO(ofFbo &fbo, string &filename);

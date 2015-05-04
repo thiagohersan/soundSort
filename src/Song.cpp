@@ -1,4 +1,5 @@
 #include "Song.h"
+#include "ofSoundFile.h"
 
 Song::~Song(){
     for(int i=0; i<numFrames; i++){
@@ -8,12 +9,58 @@ Song::~Song(){
     delete[] newOrder;
 }
 
-Song::Song(unsigned int nFrames, unsigned int nCchannels){
-    // two arrays of pointers
-    oldOrder = new Sample*[nFrames];
-    newOrder = new Sample*[nFrames];
-    numFrames = nFrames;
-    numChannels = nCchannels;
+Song::Song(string filename){
+    // open file, read samples into buffers
+    ofSoundFile mSoundFile;
+    ofSoundBuffer mSoundBuffer;
+
+    mSoundFile.loadSound(filename);
+    mSoundFile.readTo(mSoundBuffer);
+    numChannels = mSoundFile.getNumChannels();
+    numFrames = mSoundFile.getNumSamples()/mSoundFile.getNumChannels();
+    oldOrder = new Sample*[numFrames];
+    newOrder = new Sample*[numFrames];
+
+    cout << "file has " << numFrames << " frames and " << numChannels << " channels" << endl;
+
+    // read into short buffer
+    float *ft = new float[numChannels*numFrames];
+    mSoundBuffer.copyTo(ft, numFrames, numChannels, 0);
+    short *tempBuffer = new short[numChannels*numFrames];
+    for(unsigned int i=0; i<numChannels*numFrames; i++){
+        tempBuffer[i] = (short) ofMap(ft[i], -1, 1, -MAX_SAMPLE_VAL, MAX_SAMPLE_VAL, true);
+    }
+    mSoundBuffer.clear();
+    mSoundFile.close();
+
+    // read audio values into data structs and find maxVal
+    short maxVal = 0;
+    for(unsigned int i=0; i<numFrames; i++) {
+        // make mono
+        int mv = (tempBuffer[i+0] + tempBuffer[i+1])/2;
+        this->initSampleAt(i,mv);
+
+        // find largest sample value
+        if (abs(mv) > maxVal) {
+            maxVal = abs(mv);
+        }
+    }
+    cout << "--max val: " << maxVal << endl;
+
+    // don't need these anymore! delete!
+    delete[] ft;
+    delete[] tempBuffer;
+
+    // scale values, put them in the arrays
+    for(int i=0; i<numFrames; i++) {
+        // scale the fucker
+        float t = (float)(this->getOldSample(i));
+        t *= (float)(MAX_SAMPLE_VAL)/(float)(maxVal);
+
+        // put back in the Sample
+        this->setOldSample(i,(short)t);
+    }
+    cout << "--scaled samples in the arrays" << endl;
 }
 
 // IMPORTANT : creates a sample obj!
@@ -52,22 +99,22 @@ void Song::orderSamples(){
 
 // grab sample from original ordered array
 short Song::getOldSample(int i){
-    return (oldOrder[i]->getSample());
+    return oldOrder[i]->getSample();
 }
 
 // grab sample from new array
 short Song::getNewSample(int i){
-    return (newOrder[i]->getSample());
+    return newOrder[i]->getSample();
 }
 
 // set value of sample from original ordered array
 void Song::setOldSample(int i, short v){
-    (oldOrder[i]->setValue(v));
+    oldOrder[i]->setValue(v);
 }
 
 // set value of sample from new array
 void Song::setNewSample(int i, short v){
-    (newOrder[i]->setValue(v));
+    newOrder[i]->setValue(v);
 }
 
 unsigned int Song::getNumFrames() const{

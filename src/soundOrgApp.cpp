@@ -16,69 +16,9 @@ void soundOrgApp::setup() {
     whichToDraw = 0;
 
     for(int n=0; n<numOfSongs; n++) {
-        unsigned int numChannels, numFrames;
-        short* tempBuffer;
-        short maxVal = 0;
-
-        // open file, read samples into buffer
-        ofSoundFile mSoundFile;
-        ofSoundBuffer mSoundBuffer;
-
-        mSoundFile.loadSound(fileNames.at(n));
-        mSoundFile.readTo(mSoundBuffer);
-        numChannels = mSoundFile.getNumChannels();
-        numFrames = mSoundFile.getNumSamples()/mSoundFile.getNumChannels(); // ??
-
-        cout << "file has " << numFrames << " frames and " << numChannels << " channels" << endl;
-
-        // read into short buffer
-        float *ft = new float[numChannels*numFrames];
-        mSoundBuffer.copyTo(ft, numFrames, numChannels, 0);
-        tempBuffer = new short[numChannels*numFrames];
-        for(unsigned int i=0; i<numChannels*numFrames; i++){
-            tempBuffer[i] = (short) ofMap(ft[i], -1, 1, -MAX_SAMPLE_VAL, MAX_SAMPLE_VAL, true);
-        }
-        mSoundBuffer.clear();
-        mSoundFile.close();
-
-        mySongs.push_back(new Song(numFrames, numChannels));
-
-        // read audio values into data structs
-        for(unsigned int i=0; i<numFrames; i++) {
-            // make mono
-            int mv = (tempBuffer[i+0] + tempBuffer[i+1])/2;
-            mySongs.at(n)->initSampleAt(i,mv);
-			
-            // find largest sample value
-            if (abs(mv) > maxVal) {
-                maxVal = abs(mv);
-            }
-        }
-        cout << "--max val: " << maxVal << endl;
-		
-        // don't need it anymore, delete!
-        delete[] ft;
-        delete[] tempBuffer;
-		
-        // scale values, put them in the arrays
-        for(int i=0; i<numFrames; i++) {
-            // scale the fucker
-            float t = (float)(mySongs.at(n)->getOldSample(i));
-            t /= (float)(maxVal);
-            t *= (float)(MAX_SAMPLE_VAL);
-			
-            // put back in the arrays
-            mySongs.at(n)->setOldSample(i,(short)t);
-            mySongs.at(n)->setNewSample(i,(short)t);
-        }
-        cout << "--scaled samples in the arrays" << endl;
-
-        // order the samples
+        mySongs.push_back(new Song(fileNames.at(n)));
         mySongs.at(n)->orderSamples();
         cout << "--ordered the samples" << endl << endl;
-		
-        // set which frames to show (initially show all frames)
-        drawBoundaries.push_back(ofVec2f(0,numFrames));
 
         // draw an FBO with the graphs
         myVizs.push_back(ofFbo());
@@ -86,7 +26,7 @@ void soundOrgApp::setup() {
         myVizs.at(n).begin();
         ofBackground(255);
         ofSetColor(0);
-        drawSamples(mySongs.at(n), drawBoundaries.at(n));
+        drawSamples(mySongs.at(n), ofVec2f(0,mySongs.at(n)->getNumFrames()));
         myVizs.at(n).end();
         saveFBO(myVizs.at(n), ofToString(fileNames.at(n)).append(".png"));
 

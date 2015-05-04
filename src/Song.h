@@ -4,6 +4,9 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+using namespace std;
+
+#define MAX_SAMPLE_VAL 32767
 
 class Song {
     Sample** oldOrder;
@@ -12,7 +15,7 @@ class Song {
     unsigned int numChannels;
 
     public:
-        Song(unsigned int nFrames, unsigned int nCchannels);
+        Song(string filename);
         ~Song();
 
         void initSampleAt(int i, short v);
