@@ -30,6 +30,9 @@ void soundOrgApp::setup() {
         myVizs.at(n).end();
         saveFBO(myVizs.at(n), ofToString(fileNames.at(n)).append(".png"));
 
+        // TODO: re-order pixels mashup
+        //mySongs.at(n)->saveToFile(ofToString(fileNames.at(n)).append(".wav"));
+
         // cleanup
         delete mySongs.at(n);
     }
