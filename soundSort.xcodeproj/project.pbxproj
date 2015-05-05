@@ -24,9 +24,9 @@
 		AF1EF0D61702DA4900A7382A /* Tracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF1EF0071702DA4600A7382A /* Tracker.cpp */; };
 		AF1EF0D71702DA4900A7382A /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF1EF0081702DA4600A7382A /* Utilities.cpp */; };
 		AF1EF0D81702DA4900A7382A /* Wrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF1EF0091702DA4600A7382A /* Wrappers.cpp */; };
+		AF2D24EE1AF843FF00B399C6 /* libaudiodecoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8DDCBB1AF66F7000855A20 /* libaudiodecoder.a */; };
 		AF8DDC921AF5B1F100855A20 /* Song.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDC8D1AF5B1F100855A20 /* Song.cpp */; };
 		AF8DDC931AF5B1F100855A20 /* soundSort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDC8F1AF5B1F100855A20 /* soundSort.cpp */; };
-		AF8DDCCB1AF66F9800855A20 /* libaudiodecoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8DDCBB1AF66F7000855A20 /* libaudiodecoder.a */; };
 		AF8DDCCE1AF6704800855A20 /* ofSoundFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDCCC1AF6704800855A20 /* ofSoundFile.cpp */; };
 		AF8DDCD11AF6714E00855A20 /* ofSoundBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDCCF1AF6714E00855A20 /* ofSoundBuffer.cpp */; };
 		AFEB3A7A1751FBFC00D8419B /* ObjectFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFEB3A791751FBFC00D8419B /* ObjectFinder.cpp */; };
@@ -203,7 +203,7 @@
 		AF1EF0081702DA4600A7382A /* Utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utilities.cpp; sourceTree = "<group>"; };
 		AF1EF0091702DA4600A7382A /* Wrappers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wrappers.cpp; sourceTree = "<group>"; };
 		AF1EF00D1702DA4600A7382A /* ofxCv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCv.h; sourceTree = "<group>"; };
-		AF2D24EA1AF81F9F00B399C6 /* soundOrg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = soundOrg.app; path = /Users/thiago/Dev/openFrameworks/apps/myApps/soundOrg/bin/soundOrg.app; sourceTree = "<absolute>"; };
+		AF2D24ED1AF843F100B399C6 /* soundSortDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = soundSortDebug.app; path = soundSort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF8DDC8C1AF5B1F100855A20 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
 		AF8DDC8D1AF5B1F100855A20 /* Song.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Song.cpp; sourceTree = "<group>"; };
 		AF8DDC8E1AF5B1F100855A20 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
@@ -266,8 +266,8 @@
 				E45BE97E0E8CC7DD009D7055 /* Carbon.framework in Frameworks */,
 				E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */,
 				E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */,
-				AF8DDCCB1AF66F9800855A20 /* libaudiodecoder.a in Frameworks */,
 				E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */,
+				AF2D24EE1AF843FF00B399C6 /* libaudiodecoder.a in Frameworks */,
 				E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */,
 				E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */,
 				E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */,
@@ -776,6 +776,7 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
+				AF2D24ED1AF843F100B399C6 /* soundSortDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -824,7 +825,7 @@
 			);
 			name = soundSort;
 			productName = myOFApp;
-			productReference = AF2D24EA1AF81F9F00B399C6 /* soundOrg.app */;
+			productReference = AF2D24ED1AF843F100B399C6 /* soundSortDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1090,6 +1091,7 @@
 					/Users/thiago/Dev/openFrameworks/apps/myApps/soundOrg/lib,
 					/Users/thiago/Dev/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/osx,
 					/Users/thiago/Dev/openFrameworks/apps/myApps/soundOrg/lib/libaudiodecoder,
+					/Users/thiago/Dev/openFrameworks/apps/myApps/soundSort/lib/libaudiodecoder,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1196,6 +1198,7 @@
 					/Users/thiago/Dev/openFrameworks/apps/myApps/soundOrg/lib,
 					/Users/thiago/Dev/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/osx,
 					/Users/thiago/Dev/openFrameworks/apps/myApps/soundOrg/lib/libaudiodecoder,
+					/Users/thiago/Dev/openFrameworks/apps/myApps/soundSort/lib/libaudiodecoder,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
 				OTHER_CPLUSPLUSFLAGS = (
