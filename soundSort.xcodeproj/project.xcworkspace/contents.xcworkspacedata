@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:soundOrg.xcodeproj">
+      location = "self:soundSort.xcodeproj">
    </FileRef>
 </Workspace>

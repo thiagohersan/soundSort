@@ -1,8 +1,8 @@
-#include "soundOrgApp.h"
+#include "soundSort.h"
 #include "ofSoundFile.h"
 
 //--------------------------------------------------------------
-void soundOrgApp::setup() {
+void soundSort::setup() {
     ofSetVerticalSync(true);
     ofEnableAlphaBlending();
 
@@ -55,7 +55,7 @@ void soundOrgApp::setup() {
 }
 
 // src remains unchanged
-void soundOrgApp::reSampleSong(Song *srcSong, Song *dstSong){
+void soundSort::reSampleSong(Song *srcSong, Song *dstSong){
     for(unsigned int i=0; i<dstSong->getNumFrames(); i++){
         // destructive
         short srcVal = (i<srcSong->getNumFrames())?srcSong->getNewSample(i):0;
@@ -63,7 +63,7 @@ void soundOrgApp::reSampleSong(Song *srcSong, Song *dstSong){
     }
 }
 
-void soundOrgApp::saveFBO(ofFbo &fbo, string &filename){
+void soundSort::saveFBO(ofFbo &fbo, string &filename){
     ofImage f;
     ofPixels *p = new ofPixels[appWidth*appHeight];
     fbo.readToPixels(*p);
@@ -73,17 +73,17 @@ void soundOrgApp::saveFBO(ofFbo &fbo, string &filename){
 }
 
 //--------------------------------------------------------------
-void soundOrgApp::update() {}
+void soundSort::update() {}
 
 //--------------------------------------------------------------
-void soundOrgApp::draw() {
+void soundSort::draw() {
     ofBackground(255);
     ofSetColor(255);
     myVizs.at(whichToDraw).draw(0,0);
 }
 
 // from and to are in frames...
-void soundOrgApp::drawSamples(Song *song, ofVec2f bounds) {
+void soundSort::drawSamples(Song *song, ofVec2f bounds) {
     int from = bounds.x;
     int to = bounds.y;
     int numFrames = (to-from);
@@ -131,15 +131,15 @@ void soundOrgApp::drawSamples(Song *song, ofVec2f bounds) {
     }
 }
 
-void soundOrgApp::mousePressed(int x, int y, int button) {
+void soundSort::mousePressed(int x, int y, int button) {
     whichToDraw = (whichToDraw+1)%numOfSongs;
 }
 
 //--------------------------------------------------------------
-void soundOrgApp::keyPressed(int key) {}
-void soundOrgApp::keyReleased(int key) {}
-void soundOrgApp::mouseMoved(int x, int y ) {}
-void soundOrgApp::mouseDragged(int x, int y, int button) {}
-void soundOrgApp::windowResized(int w, int h) {}
-void soundOrgApp::mouseReleased(int x, int y, int button) {}
+void soundSort::keyPressed(int key) {}
+void soundSort::keyReleased(int key) {}
+void soundSort::mouseMoved(int x, int y ) {}
+void soundSort::mouseDragged(int x, int y, int button) {}
+void soundSort::windowResized(int w, int h) {}
+void soundSort::mouseReleased(int x, int y, int button) {}
 

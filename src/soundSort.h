@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "Song.h"
 
-class soundOrgApp : public ofBaseApp{
+class soundSort : public ofBaseApp{
 public:
     int appHeight, appWidth;
     vector<string> fileNames;

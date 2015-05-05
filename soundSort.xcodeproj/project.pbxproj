@@ -25,7 +25,7 @@
 		AF1EF0D71702DA4900A7382A /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF1EF0081702DA4600A7382A /* Utilities.cpp */; };
 		AF1EF0D81702DA4900A7382A /* Wrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF1EF0091702DA4600A7382A /* Wrappers.cpp */; };
 		AF8DDC921AF5B1F100855A20 /* Song.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDC8D1AF5B1F100855A20 /* Song.cpp */; };
-		AF8DDC931AF5B1F100855A20 /* soundOrgApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDC8F1AF5B1F100855A20 /* soundOrgApp.cpp */; };
+		AF8DDC931AF5B1F100855A20 /* soundSort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDC8F1AF5B1F100855A20 /* soundSort.cpp */; };
 		AF8DDCCB1AF66F9800855A20 /* libaudiodecoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8DDCBB1AF66F7000855A20 /* libaudiodecoder.a */; };
 		AF8DDCCE1AF6704800855A20 /* ofSoundFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDCCC1AF6704800855A20 /* ofSoundFile.cpp */; };
 		AF8DDCD11AF6714E00855A20 /* ofSoundBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDCCF1AF6714E00855A20 /* ofSoundBuffer.cpp */; };
@@ -207,8 +207,8 @@
 		AF8DDC8C1AF5B1F100855A20 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
 		AF8DDC8D1AF5B1F100855A20 /* Song.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Song.cpp; sourceTree = "<group>"; };
 		AF8DDC8E1AF5B1F100855A20 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
-		AF8DDC8F1AF5B1F100855A20 /* soundOrgApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = soundOrgApp.cpp; sourceTree = "<group>"; };
-		AF8DDC901AF5B1F100855A20 /* soundOrgApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = soundOrgApp.h; sourceTree = "<group>"; };
+		AF8DDC8F1AF5B1F100855A20 /* soundSort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = soundSort.cpp; sourceTree = "<group>"; };
+		AF8DDC901AF5B1F100855A20 /* soundSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = soundSort.h; sourceTree = "<group>"; };
 		AF8DDCB51AF66F7000855A20 /* CADebugMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
 		AF8DDCB61AF66F7000855A20 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
 		AF8DDCB71AF66F7000855A20 /* audiodecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = audiodecoder.h; sourceTree = "<group>"; };
@@ -785,8 +785,8 @@
 				AF8DDC8C1AF5B1F100855A20 /* Sample.h */,
 				AF8DDC8D1AF5B1F100855A20 /* Song.cpp */,
 				AF8DDC8E1AF5B1F100855A20 /* Song.h */,
-				AF8DDC8F1AF5B1F100855A20 /* soundOrgApp.cpp */,
-				AF8DDC901AF5B1F100855A20 /* soundOrgApp.h */,
+				AF8DDC8F1AF5B1F100855A20 /* soundSort.cpp */,
+				AF8DDC901AF5B1F100855A20 /* soundSort.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				AF8DDCCC1AF6704800855A20 /* ofSoundFile.cpp */,
 				AF8DDCCD1AF6704800855A20 /* ofSoundFile.h */,
@@ -808,9 +808,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* soundOrg */ = {
+		E4B69B5A0A3A1756003C02F2 /* soundSort */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "soundOrg" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "soundSort" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -822,7 +822,7 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = soundOrg;
+			name = soundSort;
 			productName = myOFApp;
 			productReference = AF2D24EA1AF81F9F00B399C6 /* soundOrg.app */;
 			productType = "com.apple.product-type.application";
@@ -834,7 +834,7 @@
 			isa = PBXProject;
 			attributes = {
 			};
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "soundOrg" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "soundSort" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -855,7 +855,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* soundOrg */,
+				E4B69B5A0A3A1756003C02F2 /* soundSort */,
 			);
 		};
 /* End PBXProject section */
@@ -908,7 +908,7 @@
 				AF1EF0D41702DA4900A7382A /* Helpers.cpp in Sources */,
 				AF1EF0D51702DA4900A7382A /* RunningBackground.cpp in Sources */,
 				AF1EF0D61702DA4900A7382A /* Tracker.cpp in Sources */,
-				AF8DDC931AF5B1F100855A20 /* soundOrgApp.cpp in Sources */,
+				AF8DDC931AF5B1F100855A20 /* soundSort.cpp in Sources */,
 				AF1EF0D71702DA4900A7382A /* Utilities.cpp in Sources */,
 				AF1EF0D81702DA4900A7382A /* Wrappers.cpp in Sources */,
 				AFEB3A7A1751FBFC00D8419B /* ObjectFinder.cpp in Sources */,
@@ -1099,8 +1099,8 @@
 				);
 				OTHER_LDFLAGS = "$(OF_CORE_LIBS)";
 				PREBINDING = NO;
-				PRODUCT_NAME = soundOrgDebug;
-				SDKROOT = macosx10.8;
+				PRODUCT_NAME = soundSortDebug;
+				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1205,8 +1205,8 @@
 				);
 				OTHER_LDFLAGS = "$(OF_CORE_LIBS)";
 				PREBINDING = NO;
-				PRODUCT_NAME = soundOrg;
-				SDKROOT = macosx10.8;
+				PRODUCT_NAME = soundSort;
+				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1214,7 +1214,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "soundOrg" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "soundSort" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -1223,7 +1223,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "soundOrg" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "soundSort" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,
