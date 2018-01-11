@@ -1,5 +1,7 @@
 #include "Song.h"
-#include "ofSoundFile.h"
+#include "ofxSoundFile.h"
+#include "ofSoundBuffer.h"
+#include "ofMath.h"
 
 Song::~Song(){
     for(int i=0; i<numFrames; i++){
@@ -13,10 +15,10 @@ Song::Song(string filename){
     songName = filename.substr(0, filename.size()-4);
 
     // open file, read samples into buffers
-    ofSoundFile mSoundFile;
+    ofxSoundFile mSoundFile;
     ofSoundBuffer mSoundBuffer;
 
-    mSoundFile.loadSound(filename);
+    mSoundFile.load(filename);
     mSoundFile.readTo(mSoundBuffer);
     numChannels = mSoundFile.getNumChannels();
     numFrames = mSoundFile.getNumSamples()/mSoundFile.getNumChannels();
@@ -67,7 +69,7 @@ Song::Song(string filename){
 }
 
 void Song::saveToFile(string filename){
-    ofSoundFile mSoundFile;
+    ofxSoundFile mSoundFile;
     ofSoundBuffer mSoundBuffer;
     short *tempBuffer = new short[numChannels*numFrames];
     for(unsigned int i=0; i<numFrames; i++){
@@ -75,7 +77,7 @@ void Song::saveToFile(string filename){
         tempBuffer[numChannels*i+1] = this->getOldSample(i);
     }
     mSoundBuffer.copyFrom(tempBuffer, numFrames, 2, sampleRate);
-    mSoundFile.saveSound(filename, mSoundBuffer);
+    mSoundFile.save(filename, mSoundBuffer);
     delete[] tempBuffer;
     mSoundBuffer.clear();
     mSoundFile.close();

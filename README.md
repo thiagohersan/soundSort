@@ -1,8 +1,4 @@
 Orders samples in audio files.  
 
 Dependencies:  
-- [libaudiodecoder](http://github.com/damiannz/libaudiodecoder.git)  
-- [new sound objects from oF (ofSoundBuffer, ofSoundFile)](https://github.com/admsyn/openFrameworks/tree/feature-sound-objects)  
-
-
-
+- [ofxSoundObjects](https://github.com/roymacdonald/ofxSoundObjects)

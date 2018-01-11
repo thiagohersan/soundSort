@@ -1,5 +1,4 @@
 #include "soundSort.h"
-#include "ofSoundFile.h"
 
 //--------------------------------------------------------------
 void soundSort::setup() {
