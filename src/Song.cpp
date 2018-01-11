@@ -1,6 +1,5 @@
 #include "Song.h"
 #include "ofxSoundFile.h"
-#include "ofSoundBuffer.h"
 #include "ofMath.h"
 
 Song::~Song(){

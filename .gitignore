@@ -1,8 +1,8 @@
 obj/
 .DS_*
 bin/*app
-bin/data/*wav
-bin/data/*mp3
-bin/data/*png
+bin/**/*wav
+bin/**/*mp3
+bin/**/*png
 */xcuserdata/
 */*/xcuserdata

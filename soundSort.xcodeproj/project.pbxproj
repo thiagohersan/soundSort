@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09A5A49920074F1700E7E349 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A5A49320074F1700E7E349 /* main.cpp */; };
+		09A5A49A20074F1700E7E349 /* Song.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A5A49520074F1700E7E349 /* Song.cpp */; };
+		09A5A49B20074F1700E7E349 /* soundSort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A5A49720074F1700E7E349 /* soundSort.cpp */; };
 		09A736A52007481A00BA06C4 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A7365C200747ED00BA06C4 /* audiodecoderbase.cpp */; };
 		09A736A62007481A00BA06C4 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A7365D200747ED00BA06C4 /* audiodecodercoreaudio.cpp */; };
 		09A736A72007482100BA06C4 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A73666200747ED00BA06C4 /* libsndfile.a */; };
@@ -14,17 +17,14 @@
 		09A736B220074AF700BA06C4 /* ofxSoundFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A7367E200747ED00BA06C4 /* ofxSoundFile.cpp */; };
 		09A736B320074AF700BA06C4 /* ofxSoundObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A73684200747ED00BA06C4 /* ofxSoundObject.cpp */; };
 		09A736B420074AF700BA06C4 /* ofxSoundObjectsUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A73687200747ED00BA06C4 /* ofxSoundObjectsUtils.cpp */; };
-		09A86233200730BE00DFB3D0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A8622B200730BE00DFB3D0 /* main.cpp */; };
-		09A86235200730BE00DFB3D0 /* Song.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A8622F200730BE00DFB3D0 /* Song.cpp */; };
-		09A86236200730BE00DFB3D0 /* soundSort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A86231200730BE00DFB3D0 /* soundSort.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		09A736AE200748DD00BA06C4 /* PBXContainerItemProxy */ = {
+		09A5A48E20074DBA00E7E349 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 09A736A9200748DD00BA06C4 /* openFrameworksLib.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 09A736AC200748DD00BA06C4;
+			remoteGlobalIDString = 09A5A48B20074DB700E7E349;
 			remoteInfo = openFrameworks;
 		};
 /* End PBXContainerItemProxy section */
@@ -42,7 +42,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		09A735942007479B00BA06C4 /* soundSort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = soundSort.app; path = /Users/thersan/Documents/IsThis/TODO_RockAndRollSort/soundSort/bin/soundSort.app; sourceTree = "<absolute>"; };
+		09A5A48C20074DB700E7E349 /* soundSort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = soundSort.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		09A5A49320074F1700E7E349 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		09A5A49420074F1700E7E349 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
+		09A5A49520074F1700E7E349 /* Song.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Song.cpp; sourceTree = "<group>"; };
+		09A5A49620074F1700E7E349 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
+		09A5A49720074F1700E7E349 /* soundSort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = soundSort.cpp; sourceTree = "<group>"; };
+		09A5A49820074F1700E7E349 /* soundSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = soundSort.h; sourceTree = "<group>"; };
 		09A73655200747ED00BA06C4 /* CADebugMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
 		09A73656200747ED00BA06C4 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
 		09A73657200747ED00BA06C4 /* audiodecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = audiodecoder.h; sourceTree = "<group>"; };
@@ -76,12 +82,6 @@
 		09A736A8200748DD00BA06C4 /* CoreOF.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../../Dev/of_v0.9.8_osx_release/libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = "<group>"; };
 		09A736A9200748DD00BA06C4 /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../../Dev/of_v0.9.8_osx_release/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = "<group>"; };
 		09A736B0200749AB00BA06C4 /* openFrameworks.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = openFrameworks.a; path = ../../../../Dev/of_v0.9.8_osx_release/libs/openFrameworksCompiled/lib/osx/openFrameworks.a; sourceTree = "<group>"; };
-		09A8622B200730BE00DFB3D0 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		09A8622E200730BE00DFB3D0 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
-		09A8622F200730BE00DFB3D0 /* Song.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Song.cpp; sourceTree = "<group>"; };
-		09A86230200730BE00DFB3D0 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
-		09A86231200730BE00DFB3D0 /* soundSort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = soundSort.cpp; sourceTree = "<group>"; };
-		09A86232200730BE00DFB3D0 /* soundSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = soundSort.h; sourceTree = "<group>"; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -236,7 +236,7 @@
 		09A736AA200748DD00BA06C4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				09A736AF200748DD00BA06C4 /* openFrameworksDebug.a */,
+				09A5A48F20074DBA00E7E349 /* openFrameworksDebug.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -265,18 +265,19 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				6948EE371B920CB800B5AC1A /* local_addons */,
+				09A5A48C20074DB700E7E349 /* soundSort.app */,
 			);
 			sourceTree = "<group>";
 		};
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				09A8622B200730BE00DFB3D0 /* main.cpp */,
-				09A8622E200730BE00DFB3D0 /* Sample.h */,
-				09A8622F200730BE00DFB3D0 /* Song.cpp */,
-				09A86230200730BE00DFB3D0 /* Song.h */,
-				09A86231200730BE00DFB3D0 /* soundSort.cpp */,
-				09A86232200730BE00DFB3D0 /* soundSort.h */,
+				09A5A49320074F1700E7E349 /* main.cpp */,
+				09A5A49420074F1700E7E349 /* Sample.h */,
+				09A5A49520074F1700E7E349 /* Song.cpp */,
+				09A5A49620074F1700E7E349 /* Song.h */,
+				09A5A49720074F1700E7E349 /* soundSort.cpp */,
+				09A5A49820074F1700E7E349 /* soundSort.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -309,7 +310,7 @@
 			);
 			name = soundSort;
 			productName = myOFApp;
-			productReference = 09A735942007479B00BA06C4 /* soundSort.app */;
+			productReference = 09A5A48C20074DB700E7E349 /* soundSort.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -347,11 +348,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		09A736AF200748DD00BA06C4 /* openFrameworksDebug.a */ = {
+		09A5A48F20074DBA00E7E349 /* openFrameworksDebug.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = openFrameworksDebug.a;
-			remoteRef = 09A736AE200748DD00BA06C4 /* PBXContainerItemProxy */;
+			remoteRef = 09A5A48E20074DBA00E7E349 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -378,14 +379,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09A5A49A20074F1700E7E349 /* Song.cpp in Sources */,
 				09A736B220074AF700BA06C4 /* ofxSoundFile.cpp in Sources */,
 				09A736B320074AF700BA06C4 /* ofxSoundObject.cpp in Sources */,
+				09A5A49920074F1700E7E349 /* main.cpp in Sources */,
 				09A736B420074AF700BA06C4 /* ofxSoundObjectsUtils.cpp in Sources */,
 				09A736A52007481A00BA06C4 /* audiodecoderbase.cpp in Sources */,
 				09A736A62007481A00BA06C4 /* audiodecodercoreaudio.cpp in Sources */,
-				09A86235200730BE00DFB3D0 /* Song.cpp in Sources */,
-				09A86233200730BE00DFB3D0 /* main.cpp in Sources */,
-				09A86236200730BE00DFB3D0 /* soundSort.cpp in Sources */,
+				09A5A49B20074F1700E7E349 /* soundSort.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
